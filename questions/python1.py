@@ -36,8 +36,13 @@
 	# What was the name of the function we have seen to check the length of a container?  Use your CLI to access the Python documentation and get help(len).
 
 def one(input1, input2):
-	return ""
-
+	''' A function to compare the length of two strings and return the longest string, or both if they are the same length'''
+	if len(input1) > len(input2):
+		return input1
+	elif len(input1) < len(input2):
+		return input2
+	else:
+		return f'{input1} {input2}'
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 	# <QUESTION 2>
@@ -60,7 +65,15 @@ def one(input1, input2):
 	# No hints for this question
 
 def two(arg1):
-	return "null"
+	''' A function to check the divisibility of a number, by 3, 5 or 15.'''
+	if arg1 % 3 == 0:
+		if arg1 % 5 == 0:
+			return 'fizzbuzz'
+		return 'fizz'
+	elif arg1 % 5 == 0:
+		return 'buzz'
+	else:
+		return 'null'
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -79,7 +92,15 @@ def two(arg1):
 	# How do we ignore case in a String? help(str) may offer some insight.
 
 def three(input):
-    return 0
+	''' A function to count the number of vowels in a string.'''
+	input = input.lower()
+	vowel_counter = 0
+	for letter in input:
+		for vowel in ['a', 'e', 'i', 'o', 'u']:
+			if letter == vowel:
+				vowel_counter += 1
+	return vowel_counter
+
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -102,9 +123,20 @@ def three(input):
 
 
 def four(input):
-    return False
+	''' A function to determine whether the mnemonic \'I before E, except after C\' is true.'''
+	input = input.lower()
+	for index, letter in enumerate(input):
+		if letter == 'c':
+			if input[index + 1] == 'e' and input[index + 2] == 'i':
+				return True
+			else:
+				return False
+		elif letter == 'i' and input[index + 1] == 'e':
+			return True
+	return False
 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	# <QUESTION 5>
 
@@ -122,7 +154,11 @@ def four(input):
 	# You may need to create a list of numbers from 0 to i, take a look at help(range).
 
 def five(input):
-	return 1
+	''' A function to calculate the factorial of a number.'''
+	answer = 1
+	for i in range(1, input+1):
+		answer *= i
+	return answer
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -144,7 +180,13 @@ def five(input):
 	# How do we find the length of a container, take a look at help(len), you will also need to look at help(str) for String manipulation.
  
 def six(string, int, char):
-	return False
+	if len(string) < int:
+		return False
+	else:
+		if string.lower()[int - 1] == char:
+			return True
+		else:
+			return False
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -167,8 +209,11 @@ def six(string, int, char):
 	# Take a look at the documentation for Strings, List and range.
 
 def seven(inputString, char):
-	return -1
-
+	string = inputString.replace(' ', '')
+	if char in string:
+		return string.index(char) + 1
+	else:
+		return -1
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
 	# <QUESTION 8>
@@ -194,7 +239,19 @@ def seven(inputString, char):
 	# help(int) for working with numbers and help(str) for working with Strings.
 
 def eight(arg1):
-	return 0
+	arg1 = arg1.split()
+	total = 0
+	highest_number = 0
+	for string in arg1:
+		for letter in string:
+			number = int(letter)
+			total += number
+		if total > highest_number:
+			highest_number = total
+			total = 0
+		else:
+			total = 0
+	return highest_number
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
@@ -221,7 +278,7 @@ def eight(arg1):
 	# Use your CLI to access the Python documentation and get help manipulating strings - help(str).
 
 def nine(input):
-	return ""
+	input = input.lower().split('bert')
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
 
